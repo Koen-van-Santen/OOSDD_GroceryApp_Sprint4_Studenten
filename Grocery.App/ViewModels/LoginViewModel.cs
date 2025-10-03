@@ -41,5 +41,6 @@ namespace Grocery.App.ViewModels
                 LoginMessage = "Ongeldige inloggegevens.";
             }
         }
+        public static Client? Currentclient { get; private set; }
     }
 }
