@@ -22,9 +22,13 @@ namespace Grocery.App.ViewModels
             Products = new(productService.GetAll());
         }
 
-        partial void OnSelectedProductChanged(Product? oldValue, Product newValue)
+        partial void OnSelectedProductChanged(Product value)
         {
-            //Zorg dat de lijst BoughtProductsList met de gegevens die passen bij het geselecteerde product. 
+            BoughtProductsList.Clear();
+            foreach (BoughtProducts boughtProduct in _boughtProductsService.Get(value.Id))
+            {
+                BoughtProductsList.Add(boughtProduct);
+            }
         }
 
         [RelayCommand]
